@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bloxd Game Launcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111;
+      color: #fff;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    .button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 90%;
+      height: 600px;
+      margin-top: 20px;
+      border: 2px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bloxd Game Launcher</h1>
+  <div>
+    <button class="button" onclick="loadGame('https://bloxd.io')">Play Bloxd.io</button>
+    <button class="button" onclick="loadGame('https://staging.bloxd.io')">Play Staging</button>
+    <button class="button" onclick="loadGame('https://bloxdforge.com/studio/')">Play Studio</button>
+  </div>
+  <div id="iframeContainer">
+    <iframe id="gameFrame" src="" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+  </div>
+
+  <script>
+    function loadGame(url) {
+      const iframe = document.getElementById('gameFrame');
+      iframe.src = url;
+
+      // Optional: fallback if blocked
+      iframe.onerror = () => {
+        alert("Embedding is blocked. Opening in new tab.");
+        window.open(url, '_blank');
+      };
+    }
+  </script>
+</body>
+</html>
