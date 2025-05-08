@@ -2,53 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bloxd Game Launcher</title>
+  <title>Bloxd Emulator</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
+      margin: 0;
+      background: #1e1e1e;
+      color: white;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .emulator {
+      background: #2d2d2d;
+      border: 4px solid #555;
+      border-radius: 10px;
+      padding: 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .emulator-header {
       background: #111;
-      color: #fff;
-    }
-    h1 {
-      margin-top: 20px;
-    }
-    .button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
+      padding: 5px 10px;
+      color: #0f0;
+      font-size: 14px;
     }
     iframe {
-      width: 90%;
-      height: 600px;
-      margin-top: 20px;
-      border: 2px solid #444;
+      flex: 1;
+      border: none;
+      margin-top: 10px;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <h1>Bloxd Game Launcher</h1>
-  <div>
-    <button class="button" onclick="loadGame('https://bloxd.io')">Play Bloxd.io</button>
-    <button class="button" onclick="loadGame('https://staging.bloxd.io')">Play Staging</button>
-    <button class="button" onclick="loadGame('https://bloxdforge.com/studio/')">Play Studio</button>
+  <div class="emulator">
+    <div class="emulator-header">[Loading] bloxd.io - Emulator Mode</div>
+    <iframe src="https://bloxd.io" sandbox="allow-scripts allow-same-origin allow-forms" title="Bloxd.io"></iframe>
   </div>
-  <div id="iframeContainer">
-    <iframe id="gameFrame" src="" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
-  </div>
-
-  <script>
-    function loadGame(url) {
-      const iframe = document.getElementById('gameFrame');
-      iframe.src = url;
-
-      // Optional: fallback if blocked
-      iframe.onerror = () => {
-        alert("Embedding is blocked. Opening in new tab.");
-        window.open(url, '_blank');
-      };
-    }
-  </script>
 </body>
 </html>
